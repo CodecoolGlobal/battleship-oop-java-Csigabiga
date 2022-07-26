@@ -16,7 +16,7 @@ public class Battleship {
         while (isRunning) {
             display.printMenu();
             input.chooseMenu();
-            Board board = new Board();
+            Board board = new Board(10);
             board.fillBoardWithSquares();
             System.out.println(Arrays.toString(board.getBoard()));
             isRunning = false;
