@@ -23,12 +23,6 @@ public class Board {
         ocean[x][y].setSquareStatus(status);
     }
 
-
-    public Board() {
-        this.ocean = new Square[10][10];
-    }
-
-
     public void fillBoardWithSquares() {
 
         for (int i= 0; i < boardSize; i++){
