@@ -2,7 +2,6 @@ package com.codecool.battleship.board;
 
 import com.codecool.battleship.ship.ShipType;
 import com.codecool.battleship.utils.Input;
-import com.codecool.battleship.utils.Validator;
 
 import java.util.ArrayList;
 
@@ -30,7 +29,7 @@ public class BoardFactory {
                 board.changeStatus(x, y, SquareStatus.SHIP);
             } else {
                 String direction = Input.direction();
-                if (!Validator.validatePlacement(direction, ship, x, y, board)) {
+                if (!validatePlacement(direction, ship, x, y) {
                     return false;
                 }
                 for (int i = 0; i < ship.getShipLength() + 1; i++) {
@@ -62,5 +61,35 @@ public class BoardFactory {
             randomPlacement();
         }
         return board;
+    }
+
+
+    private boolean validatePlacement(String direction, ShipType ship, int x, int y) {
+        switch (direction) {
+            case "left":
+                for (int i = 0; i < ship.getShipLength(); i++) {
+                    boolean empty = board.isPlacementOk(x - i, y);
+                    if (!empty) {return false;}
+                }
+                break;
+            case "right":
+                for (int i = 0; i < ship.getShipLength(); i++) {
+                    boolean empty = board.isPlacementOk(x + i, y);
+                    if (!empty) {return false;}
+                }
+                break;
+            case "up":
+                for (int i = 0; i < ship.getShipLength(); i++) {
+                    boolean empty = board.isPlacementOk(x, y + i);
+                    if (!empty) {return false;}
+                }
+                break;
+            case "down":
+                for (int i = 0; i < ship.getShipLength(); i++) {
+                    boolean empty = board.isPlacementOk(x, y - i);
+                    if (!empty) {return false;}
+                }
+        }
+        return true;
     }
 }
