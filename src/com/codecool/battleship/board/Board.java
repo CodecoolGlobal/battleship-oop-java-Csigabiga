@@ -2,7 +2,13 @@ package com.codecool.battleship.board;
 
 
 public class Board {
+    private int boardSize;
 
+    public Board(int size) {
+        this.boardSize = size;
+        this.ocean = new Square[size][size];
+
+    }
 
     private final Square[][] ocean;
 
@@ -27,10 +33,6 @@ public class Board {
 
         for (int i= 0; i < boardSize; i++){
             for (int j = 0; j < boardSize; j++) {
-
-        for (int i= 0; i < ocean.length; i++){
-            for (int j = 0; j < ocean.length; j++) {
-
                 ocean[i][j] = new Square(i,j);
             }
         }
@@ -39,5 +41,10 @@ public class Board {
     public int getBoardSize() {
         return boardSize;
     }
+
+    public Square[][] getBoard(){
+        return this.ocean;
+    }
+
 }
 

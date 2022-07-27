@@ -7,13 +7,13 @@ import java.util.ArrayList;
 public class Input {
 
 //TODO: extract methods below
-    public String coordinates() {return "b2";}
+    public static String coordinates() {return "b2";}
 
 
-    public String direction() {return "up";}
+    public static String direction() {return "up";}
 
 
-    public ArrayList<Integer> decoder(String coords) {return null;}
+    public static ArrayList<Integer> decoder(String coords) {return null;}
 
     public int getUserInput(String msg) {
         try {
