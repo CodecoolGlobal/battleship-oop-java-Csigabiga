@@ -4,6 +4,7 @@ import com.codecool.battleship.ship.ShipType;
 import com.codecool.battleship.utils.Input;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class BoardFactory {
 
@@ -14,7 +15,41 @@ public class BoardFactory {
         board.fillBoardWithSquares();
     }
 
-    private void randomPlacement() {}
+    private void randomPlacement(ShipType ship) {
+        ArrayList<String> directions = new ArrayList<String>(4);
+        directions.add("up");
+        directions.add("down");
+        directions.add("right");
+        directions.add("left");
+        int index = ThreadLocalRandom.current().nextInt(0, 2 + 1);
+        boolean empty = false;
+        while (empty) {
+            int x = ThreadLocalRandom.current().nextInt(0, board().getBoardSize() + 1);
+            int y = ThreadLocalRandom.current().nextInt(0, board().getBoardSize() + 1);
+            empty = board.isPlacementOk(x, y);
+            if (empty) {
+                if (ship == ShipType.Destroyer) {
+                    board.changeStatus(x, y, SquareStatus.SHIP);
+                } else {
+                    String direction = directions.get(index);
+                    if (!validatePlacement(direction, ship, x, y)) {
+                        empty = false;
+                    } else {
+                        for (int i = 0; i < ship.getShipLength() + 1; i++) {
+                            int modifier = 0;
+                            switch (direction) {
+                                case "left" -> board.changeStatus(x - modifier, y, SquareStatus.SHIP);
+                                case "right" -> board.changeStatus(x + modifier, y, SquareStatus.SHIP);
+                                case "up" -> board.changeStatus(x, y + modifier, SquareStatus.SHIP);
+                                case "down" -> board.changeStatus(x, y - modifier, SquareStatus.SHIP);
+                            }
+                            modifier++;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 
     private boolean manualPlacement(ShipType ship) {
