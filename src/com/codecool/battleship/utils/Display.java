@@ -31,8 +31,13 @@ public class Display {
         int rowCount = 1;
         for (Square[] row : currentBoard){
             char ch = (char)  (rowCount + ASCII);
-            boardDisplay.append("   ");
+            boardDisplay.append("  ");
             boardDisplay.append(Character.toUpperCase(ch));
+            boardDisplay.append("  ");
+            for(Square cell : row){
+                boardDisplay.append(cell.getSquareStatus().getCharacter());
+                boardDisplay.append("  ");
+            }
             boardDisplay.append("\n");
             rowCount++;
         }
