@@ -1,7 +1,7 @@
 package com.codecool.battleship.board;
 
 public enum SquareStatus {
-    EMPTY('E'),
+    EMPTY('.'),
     SHIP('S'),
     HIT('H'),
     MISS('M');

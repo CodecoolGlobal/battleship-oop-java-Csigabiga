@@ -1,9 +1,9 @@
 package com.codecool.battleship;
 
 import com.codecool.battleship.board.Board;
-import com.codecool.battleship.board.Square;
 import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
+import com.codecool.battleship.utils.MenuSelector;
 
 import java.util.Arrays;
 
@@ -15,10 +15,15 @@ public class Battleship {
         boolean isRunning = true;
         while (isRunning) {
             display.printMenu();
-            input.chooseMenu();
+            int validatedOption = input.validateInput(3);
+            new MenuSelector(validatedOption);
+
             Board board = new Board(10);
             board.fillBoardWithSquares();
             System.out.println(Arrays.toString(board.getBoard()));
+            //TODO delete me after testing
+            display.displayOneBoard(board);
+            display.displayTwoBoard(board, board);
             isRunning = false;
         }
     }
