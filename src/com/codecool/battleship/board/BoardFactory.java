@@ -10,8 +10,8 @@ public class BoardFactory {
 
     private final Board board;
 
-    public BoardFactory() {
-        this.board = new Board();
+    public BoardFactory(int size) {
+        this.board = new Board(size);
         board.fillBoardWithSquares();
     }
 
@@ -24,8 +24,8 @@ public class BoardFactory {
         int index = ThreadLocalRandom.current().nextInt(0, 2 + 1);
         boolean empty = false;
         while (empty) {
-            int x = ThreadLocalRandom.current().nextInt(0, board().getBoardSize() + 1);
-            int y = ThreadLocalRandom.current().nextInt(0, board().getBoardSize() + 1);
+            int x = ThreadLocalRandom.current().nextInt(0, this.board.getBoardSize() + 1);
+            int y = ThreadLocalRandom.current().nextInt(0, this.board.getBoardSize() + 1);
             empty = board.isPlacementOk(x, y);
             if (empty) {
                 if (ship == ShipType.Destroyer) {
@@ -84,7 +84,7 @@ public class BoardFactory {
 
 
 
-    public Board board() {
+    public Board getBoard() {
         return board;
     }
 
@@ -93,7 +93,8 @@ public class BoardFactory {
         if (type.equals("manual")) {
             manualPlacement(ship);
         } else {
-            randomPlacement();
+            //TODO PLACE SHIP WHEN WE ARE THERE
+            //randomPlacement();
         }
         return board;
     }
