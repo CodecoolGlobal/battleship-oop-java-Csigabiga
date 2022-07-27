@@ -2,7 +2,19 @@ package com.codecool.battleship.utils;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import java.util.ArrayList;
+
 public class Input {
+
+//TODO: extract methods below
+    public String coordinates() {return "b2";}
+
+
+    public String direction() {return "up";}
+
+
+    public ArrayList<Integer> decoder(String coords) {return null;}
+
     public int getUserInput(String msg) {
         try {
             System.out.println(msg);

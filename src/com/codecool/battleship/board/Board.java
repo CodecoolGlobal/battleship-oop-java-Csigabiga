@@ -1,21 +1,28 @@
 package com.codecool.battleship.board;
 
+
 public class Board {
 
-    //TODO: change public fields to private
-    int boardSize;
-    public Square[][] ocean;
 
-    public boolean isPlacementOk() {
-        //TODO implement placement validation
-        return true;
+    private final Square[][] ocean;
+
+
+    public boolean isPlacementOk(int x, int y) {
+        SquareStatus status = ocean[x][y].getSquareStatus();
+        return status == SquareStatus.EMPTY;
     }
 
-    public Board(int size) {
-        this.boardSize = size;
-        this.ocean = new Square[size][size];
 
+    public void changeStatus (int x, int y, SquareStatus status) {
+        ocean[x][y].setSquareStatus(status);
     }
+
+
+    public Board() {
+        this.ocean = new Square[10][10];
+    }
+
+
     public void fillBoardWithSquares() {
 
         for (int i= 0; i < boardSize; i++){
@@ -28,14 +35,9 @@ public class Board {
             }
         }
     }
-    //todo DELETE ME AFTER TESTING
-    public Square[][] getBoard(){
-        return this.ocean;
-    }
 
     public int getBoardSize() {
         return boardSize;
     }
-
 }
 
