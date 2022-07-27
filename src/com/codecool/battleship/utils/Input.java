@@ -8,7 +8,6 @@ public class Input {
             Scanner sc = new Scanner(System.in);
             return sc.nextInt();
         } catch (InputMismatchException e) {
-            System.out.println("Not a number");
             return 0;
         }
     }
