@@ -26,6 +26,5 @@ public class Board {
         return this.ocean;
     }
 
-
 }
 

@@ -11,12 +11,19 @@ public class Display {
     String whiteSpaceBetweenBoards = " ".repeat(30);
     public void printMenu() {
         System.out.println("""
-                Welcome to the BattleShip game!
+                Welcome to the Battleship game!
+                
                 Choose an option!
                 1. Start Game
-                2. Highscores
+                2. High Score
                 3. Exit Game""");
+    }
 
+    public void printSubMenu() {
+        System.out.println("""
+                Choose an option!
+                1. Single Player
+                2. Multiplayer""");
     }
     public void displayOneBoard(Board playerBoard) {
         Square[][] currentBoard = playerBoard.getBoard();
@@ -103,6 +110,10 @@ public class Display {
 
         }
         return twoBoards;
+
+    public void printHighScore() {
+        System.out.println("High Score");
+
     }
 }
 
