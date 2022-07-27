@@ -19,6 +19,7 @@ public class Battleship {
             Board board = new Board(10);
             board.fillBoardWithSquares();
             System.out.println(Arrays.toString(board.getBoard()));
+            display.displayOneBoard(board);
             isRunning = false;
         }
     }
