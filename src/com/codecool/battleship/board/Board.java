@@ -7,6 +7,7 @@ public class Board {
     public Square[][] ocean;
 
     public boolean isPlacementOk() {
+        //TODO implement placement validation
         return true;
     }
 
@@ -16,8 +17,13 @@ public class Board {
 
     }
     public void fillBoardWithSquares() {
+
         for (int i= 0; i < boardSize; i++){
             for (int j = 0; j < boardSize; j++) {
+
+        for (int i= 0; i < ocean.length; i++){
+            for (int j = 0; j < ocean.length; j++) {
+
                 ocean[i][j] = new Square(i,j);
             }
         }
