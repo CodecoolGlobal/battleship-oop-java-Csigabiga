@@ -1,6 +1,7 @@
 package com.codecool.battleship;
 
 import com.codecool.battleship.board.Board;
+import com.codecool.battleship.board.BoardFactory;
 import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
 import com.codecool.battleship.utils.MenuSelector;
@@ -18,12 +19,12 @@ public class Battleship {
             int validatedOption = input.validateInput(3, 1);
             new MenuSelector(validatedOption, display);
 
-            Board board = new Board(10);
-            board.fillBoardWithSquares();
-            //TODO delete me after testing
-            System.out.println(Arrays.toString(board.getBoard()));
-            display.displayOneBoard(board);
-            display.displayTwoBoard(board, board);
+            BoardFactory board = new BoardFactory(10);
+            // TODO temp fix for running the Battleship.java
+            Board gameBoard = board.getBoard();
+            System.out.println(Arrays.toString(gameBoard.getBoard()));
+            display.displayOneBoard(gameBoard);
+            display.displayTwoBoard(gameBoard, gameBoard);
 
             isRunning = false;
         }
