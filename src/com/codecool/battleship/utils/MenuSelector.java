@@ -1,15 +1,16 @@
 package com.codecool.battleship.utils;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class MenuSelector {
-    Display display = new Display();
+    private final Display display;
+    public MenuSelector(Display display) {
+        this.display = display;
+    }
 
-    public MenuSelector(int option) {
+    public MenuSelector(int option, Display display) {
+        this.display = display;
         switch (option) {
-            case 1 -> display.printSubMenu();
-            case 2 -> display.printHighScore();
+            case 1 -> this.display.printSubMenu();
+            case 2 -> this.display.printHighScore();
             case 3 -> System.exit(1);
         }
     }

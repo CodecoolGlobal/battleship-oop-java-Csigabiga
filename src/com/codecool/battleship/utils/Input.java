@@ -13,10 +13,10 @@ public class Input {
         }
     }
 
-    public int validateInput(int max, int min, String msg) {
-        int option = getUserInput(msg);
+    public int validateInput(int max, int min) {
+        int option = getUserInput(Display.ChooseOptionMsg);
         while (option > max || option < min) {
-            option = getUserInput("Invalid input, try again!");
+            option = getUserInput(Display.InvalidOptionMsg);
         }
         return option;
     }

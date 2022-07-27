@@ -5,11 +5,21 @@ import com.codecool.battleship.board.Board;
 import java.util.Arrays;
 
 public class Display {
-    Input input = new Input();
+    private final Input input;
+
+    public final static String ChooseOptionMsg = "Choose an option";
+    public final static String InvalidOptionMsg = "Invalid input, try again!";
+
+    public final static String SpecifyBoardSizeMsg = "Specify the board size (5-10)";
+    public final static String WelcomeMsg = "Welcome to the Battleship game!";
+
+    public Display(Input input) {
+        this.input = input;
+    }
+
     public void printMenu() {
+        System.out.println(WelcomeMsg);
         System.out.println("""
-                Welcome to the Battleship game!
-                
                 1. Start Game
                 2. High Score
                 3. Exit Game""");
@@ -19,11 +29,9 @@ public class Display {
         System.out.println("""
                 1. Single Player
                 2. Multiplayer""");
-        input.validateInput(2, 1, "Choose an option!");
-        int boardSize = input.validateInput(10, 5, "Specify the board size (5-10)");
-        Board board = new Board(boardSize);
-        board.fillBoardWithSquares();
-        System.out.println(Arrays.toString(board.getBoard()));
+        input.validateInput(2, 1);
+        input.getUserInput(SpecifyBoardSizeMsg);
+        input.validateInput(10, 5);
     }
 
     public void printHighScore() {
