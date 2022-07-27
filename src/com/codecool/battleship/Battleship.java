@@ -15,12 +15,9 @@ public class Battleship {
         boolean isRunning = true;
         while (isRunning) {
             display.printMenu();
-            int validatedOption = input.validateInput(3);
+            int validatedOption = input.validateInput(3, 1, "Choose an option!");
             new MenuSelector(validatedOption);
 
-            Board board = new Board(10);
-            board.fillBoardWithSquares();
-            System.out.println(Arrays.toString(board.getBoard()));
             isRunning = false;
         }
     }

@@ -3,8 +3,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
-    public int chooseOption() {
+    public int getUserInput(String msg) {
         try {
+            System.out.println(msg);
             Scanner sc = new Scanner(System.in);
             return sc.nextInt();
         } catch (InputMismatchException e) {
@@ -12,11 +13,10 @@ public class Input {
         }
     }
 
-    public int validateInput(int possibleOptions) {
-        int option = chooseOption();
-        while (option > possibleOptions || option <= 0) {
-            System.out.println("Invalid input, try again!");
-            option = chooseOption();
+    public int validateInput(int max, int min, String msg) {
+        int option = getUserInput(msg);
+        while (option > max || option < min) {
+            option = getUserInput("Invalid input, try again!");
         }
         return option;
     }
