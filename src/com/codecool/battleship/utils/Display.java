@@ -27,6 +27,15 @@ public class Display {
                 boardDisplay.append(" ");
             }
         }
+        boardDisplay.append("\n");
+        int rowCount = 1;
+        for (Square[] row : currentBoard){
+            char ch = (char)  (rowCount + ASCII);
+            boardDisplay.append("   ");
+            boardDisplay.append(Character.toUpperCase(ch));
+            boardDisplay.append("\n");
+            rowCount++;
+        }
         System.out.println(boardDisplay);
     }
 }
