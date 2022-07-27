@@ -9,8 +9,8 @@ public class Board {
         return true;
     }
 
-    public Board() {
-        this.ocean = new Square[10][10];
+    public Board(int size) {
+        this.ocean = new Square[size][size];
 
     }
     public void fillBoardWithSquares() {
@@ -24,7 +24,6 @@ public class Board {
     public Square[][] getBoard(){
         return this.ocean;
     }
-
 
 }
 
