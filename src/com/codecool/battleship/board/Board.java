@@ -7,8 +7,9 @@ public class Board {
     private final Square[][] ocean;
 
 
-    public boolean isPlacementOk() {
-        return true;
+    public boolean isPlacementOk(int x, int y) {
+        SquareStatus status = ocean[x][y].getSquareStatus();
+        return status == SquareStatus.EMPTY;
     }
 
 
