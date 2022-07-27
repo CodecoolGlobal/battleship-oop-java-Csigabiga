@@ -20,6 +20,7 @@ public class Battleship {
             board.fillBoardWithSquares();
             System.out.println(Arrays.toString(board.getBoard()));
             display.displayOneBoard(board);
+            display.displayTwoBoard(board, board);
             isRunning = false;
         }
     }
