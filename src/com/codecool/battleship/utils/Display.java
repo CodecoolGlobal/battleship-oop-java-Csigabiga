@@ -4,6 +4,8 @@ import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.Square;
 
 public class Display {
+
+    final int ASCII = 96;
     public void printMenu() {
         System.out.println("""
                 Welcome to the BattleShip game!
@@ -16,31 +18,44 @@ public class Display {
     public void displayOneBoard(Board playerBoard) {
         Square[][] currentBoard = playerBoard.getBoard();
         int boardLength = currentBoard.length;
-        final int ASCII = 96;
+
         StringBuilder boardDisplay = new StringBuilder();
-        boardDisplay.append("     ");
-        for (int i = 1; i <= boardLength; i++) {
-            boardDisplay.append(i);
-            if (i < 9) {
-                boardDisplay.append("  ");
-            } else {
-                boardDisplay.append(" ");
-            }
-        }
+        boardDisplay.append(drawColumnName(boardLength));
         boardDisplay.append("\n");
-        int rowCount = 1;
-        for (Square[] row : currentBoard){
-            char ch = (char)  (rowCount + ASCII);
-            boardDisplay.append("  ");
-            boardDisplay.append(Character.toUpperCase(ch));
-            boardDisplay.append("  ");
-            for(Square cell : row){
-                boardDisplay.append(cell.getSquareStatus().getCharacter());
-                boardDisplay.append("  ");
-            }
-            boardDisplay.append("\n");
-            rowCount++;
-        }
+        boardDisplay.append(drawRows(currentBoard));
         System.out.println(boardDisplay);
     }
+
+    private StringBuilder drawRows(Square[][] currentBoard) {
+        int rowCount = 1;
+        StringBuilder rows = new StringBuilder();
+        for (Square[] row : currentBoard){
+            char ch = (char)  (rowCount + ASCII);
+            rows.append("  ");
+            rows.append(Character.toUpperCase(ch));
+            rows.append("  ");
+            for(Square cell : row){
+                rows.append(cell.getSquareStatus().getCharacter());
+                rows.append("  ");
+            }
+            rows.append("\n");
+            rowCount++;
+        }
+        return rows;
+    }
+
+    private StringBuilder drawColumnName(int boardLength) {
+        StringBuilder column = new StringBuilder();
+        column.append("     ");
+        for (int i = 1; i <= boardLength; i++) {
+            column.append(i);
+            if (i < 9) {
+                column.append("  ");
+            } else {
+                column.append(" ");
+            }
+        }
+        return column;
+    }
 }
+
