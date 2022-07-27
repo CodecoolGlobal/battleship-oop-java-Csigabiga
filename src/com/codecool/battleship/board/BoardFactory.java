@@ -29,7 +29,7 @@ public class BoardFactory {
                 board.changeStatus(x, y, SquareStatus.SHIP);
             } else {
                 String direction = Input.direction();
-                if (!validatePlacement(direction, ship, x, y) {
+                if (!validatePlacement(direction, ship, x, y)) {
                     return false;
                 }
                 for (int i = 0; i < ship.getShipLength() + 1; i++) {
