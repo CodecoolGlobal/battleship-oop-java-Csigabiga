@@ -116,9 +116,9 @@ public class BoardFactory {
                         }
                         modifier++;
                     }
+                    success = true;
                 }
             }
-            success = true;
         }
         return new Ship(ship, squareList);
     }
