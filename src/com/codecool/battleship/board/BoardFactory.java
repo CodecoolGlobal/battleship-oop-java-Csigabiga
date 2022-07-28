@@ -93,8 +93,7 @@ public class BoardFactory {
         if (type.equals("manual")) {
             manualPlacement(ship);
         } else {
-            //TODO PLACE SHIP WHEN WE ARE THERE
-            //randomPlacement();
+            randomPlacement(ship);
         }
         return board;
     }
