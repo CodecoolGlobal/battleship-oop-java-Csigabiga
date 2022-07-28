@@ -54,35 +54,41 @@ public class BoardFactory {
     }
 
 
-    private boolean manualPlacement(ShipType ship) {
-        Display.shipTypeAnnouncer(ship);
-        ArrayList<Integer> coordinates = Decoder.decoder(Input.getCoordinate(Display.AskForCoordinateMsg), board.getBoardSize());
-        int x = coordinates.get(0);
-        int y = coordinates.get(1);
-        boolean empty = board.isPlacementOk(x, y);
-        if (!empty) {
-            return false;
-        }
-        if (ship == ShipType.Destroyer) {
-            board.changeStatus(x, y, SquareStatus.SHIP);
-        } else {
-            String direction = Input.getDirection(Display.AskForDirectionMsg);
-            if (!validatePlacement(direction, ship, x, y)) {
-                return false;
+    private void manualPlacement(ShipType ship) {
+        boolean succes = false;
+        while (!succes) {
+            Display.shipTypeAnnouncer(ship);
+            ArrayList<Integer> coordinates = Decoder.decoder(Input.getCoordinate(Display.AskForCoordinateMsg), board.getBoardSize());
+            int x = coordinates.get(0);
+            int y = coordinates.get(1);
+            boolean empty = board.isPlacementOk(x, y);
+            if (!empty) {
+                succes = false;
             }
-            int modifier = 0;
-            for (int i = 0; i < ship.getShipLength(); i++) {
-                switch (direction) {
-                    case "up" -> board.changeStatus(x - modifier, y, SquareStatus.SHIP);
-                    case "down" -> board.changeStatus(x + modifier, y, SquareStatus.SHIP);
-                    case "right" -> board.changeStatus(x, y + modifier, SquareStatus.SHIP);
-                    case "left" -> board.changeStatus(x, y - modifier, SquareStatus.SHIP);
+            if (ship == ShipType.Destroyer) {
+                board.changeStatus(x, y, SquareStatus.SHIP);
+                succes = true;
+            } else {
+                String direction = Input.getDirection(Display.AskForDirectionMsg);
+                if (!validatePlacement(direction, ship, x, y)) {
+                    succes = false;
+                } else {
+                    int modifier = 0;
+                    for (int i = 0; i < ship.getShipLength(); i++) {
+                        switch (direction) {
+                            case "up" -> board.changeStatus(x - modifier, y, SquareStatus.SHIP);
+                            case "down" -> board.changeStatus(x + modifier, y, SquareStatus.SHIP);
+                            case "right" -> board.changeStatus(x, y + modifier, SquareStatus.SHIP);
+                            case "left" -> board.changeStatus(x, y - modifier, SquareStatus.SHIP);
+                        }
+                        modifier++;
+                    }
+                    succes = true;
                 }
-                modifier++;
+//                Display.printDisplayField(Display.Invalid);
+                //todo make invalid placement phase
             }
         }
-        return true;
-
     }
 
 
