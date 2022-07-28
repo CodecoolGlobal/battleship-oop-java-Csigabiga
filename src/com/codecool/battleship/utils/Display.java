@@ -98,7 +98,7 @@ public class Display {
             twoBoards.append(ColorTerminal.ANSI_YELLOW + Character.toUpperCase(ch) + ColorTerminal.ANSI_RESET);
             twoBoards.append(whiteSpaceBetweenObjects);
             for (Square square : boardTwo[i]) {
-                twoBoards.append(square.getSquareStatus().getCharacter());
+                twoBoards.append(square.getSquareStatus().getCharacter() == "\uD83D\uDC20"? "🌊" : square.getSquareStatus().getCharacter());
                 twoBoards.append(whiteSpaceBetweenObjects);
             }
             twoBoards.append("\n");
@@ -144,5 +144,9 @@ public class Display {
 
     public static void wrongCoordinate(){
         System.out.println(InvalidPlacement);
+    }
+
+    public void winMessage(String playerName){
+        System.out.println(String.format("%1$s YOU HAVE SUCCESSFULLY SET ALL OF THE ENEMY FISH SHIP ON FIRE. GG", playerName));
     }
 }

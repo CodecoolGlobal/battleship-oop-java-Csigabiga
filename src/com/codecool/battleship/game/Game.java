@@ -66,7 +66,7 @@ public class Game {
                 enemyPlayer = playerTwo;
             }
         }
-        //TODO win message with current player
+        display.winMessage(currentPlayer.getPlayerName());
     }
 
     private Player createPlayer(int boardSize) {

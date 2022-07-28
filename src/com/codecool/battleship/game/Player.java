@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Player {
-    String playerName;
+    private String playerName;
 
     private BoardFactory board;
     private List<Ship> ships;
@@ -47,6 +47,7 @@ public class Player {
     public BoardFactory getPlayerBoardFactory() {
         return this.board;
     }
+    public String getPlayerName(){return this.playerName;}
 
 
     public boolean manualShoot(Board board) {
