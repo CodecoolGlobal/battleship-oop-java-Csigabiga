@@ -1,6 +1,5 @@
 package com.codecool.battleship.utils;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Input {
 
@@ -43,12 +42,20 @@ public class Input {
         return true;
     }
 
-    public static String getDirection() {
-
+    public static String getDirection(String msg) {
+        System.out.println(Display.AskForDirectionMsg);
+        Scanner scanner = new Scanner(System.in);
+        String direction = scanner.nextLine().toLowerCase();
+        if (validateDirection(direction)) return direction;
         return "";
     }
 
-    public boolean validateDirection() {
+    public static boolean validateDirection(String direction) {
+        ArrayList<String> directions = new ArrayList<String>(Arrays.asList("up", "down", "right", "left"));
+
+        while (!directions.contains(direction)) {
+            direction = getDirection(Display.AskForCoordinateMsg);
+        }
         return true;
     }
 }
