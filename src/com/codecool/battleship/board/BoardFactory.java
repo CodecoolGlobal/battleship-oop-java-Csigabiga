@@ -2,6 +2,7 @@ package com.codecool.battleship.board;
 
 import com.codecool.battleship.ship.ShipType;
 import com.codecool.battleship.utils.Decoder;
+import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
 
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class BoardFactory {
 
 
     private boolean manualPlacement(ShipType ship) {
-        ArrayList<Integer> coordinates = Decoder.decoder(Input.coordinates());
+        ArrayList<Integer> coordinates = Decoder.decoder(Input.getCoordinate(Display.AskForCoordinateMsg), board.getBoardSize());
         int x = coordinates.get(0);
         int y = coordinates.get(1);
         boolean empty = board.isPlacementOk(x, y);
@@ -64,7 +65,7 @@ public class BoardFactory {
         if (ship == ShipType.Destroyer) {
             board.changeStatus(x, y, SquareStatus.SHIP);
         } else {
-            String direction = Input.direction();
+            String direction = Input.getDirection();
             if (!validatePlacement(direction, ship, x, y)) {
                 return false;
             }

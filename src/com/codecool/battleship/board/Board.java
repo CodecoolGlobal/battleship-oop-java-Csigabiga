@@ -7,7 +7,6 @@ public class Board {
     public Board(int size) {
         this.boardSize = size;
         this.ocean = new Square[size][size];
-
     }
 
     private final Square[][] ocean;

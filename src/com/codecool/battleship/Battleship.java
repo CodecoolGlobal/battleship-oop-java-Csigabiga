@@ -2,6 +2,7 @@ package com.codecool.battleship;
 
 import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.BoardFactory;
+import com.codecool.battleship.utils.Decoder;
 import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
 import com.codecool.battleship.utils.MenuSelector;
@@ -12,9 +13,11 @@ public class Battleship {
     public static void main(String[] args) {
         Input input = new Input();
         Display display = new Display(input);
+        Decoder decoder = new Decoder(input);
 
         boolean isRunning = true;
         while (isRunning) {
+            Decoder.decoder("B12", 10);
             display.printMenu();
             int validatedOption = input.validateInput(3, 1);
             new MenuSelector(validatedOption, display);
