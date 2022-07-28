@@ -7,14 +7,15 @@ import com.codecool.battleship.ship.ShipType;
 
 public class Display {
     final int ASCII = 96;
-    String whiteSpaceBetweenObjects = " ".repeat(2);
+    String whiteSpaceBetweenObjects = " ".repeat(1);
+    String whiteSpaceBetweenColumnNames = " ".repeat(2);
     String whiteSpaceBetweenBoards = " ".repeat(30);
     private final Input input;
     public final static String ChooseOptionMsg = "Choose an option";
     public final static String InvalidOptionMsg = "Invalid input, try again!";
     public final static String SpecifyBoardSizeMsg = "Specify the board size (5-10)";
     public final static String WelcomeMsg = "Welcome to the Battleship game!";
-    public final static String AskForCoordinateMsg = "Define a coordinate e.g.:'A1'";
+    public final static String AskForCoordinateMsg = "Choose a coordinate e.g.:'A1'";
     public final static String AskForDirectionMsg = "Please type the direction to place your ship. (up, left, down, right)";
     public final static String AskPlayerName = "Please enter your name: ";
 
@@ -28,7 +29,7 @@ public class Display {
         Square[][] currentBoard = playerBoard.getBoard();
         int boardLength = currentBoard.length;
 
-        String boardDisplay = drawColumnName(boardLength, 5) +
+        String boardDisplay = drawColumnName(boardLength, 4) +
                 "\n" +
                 drawRows(currentBoard);
 
@@ -40,9 +41,9 @@ public class Display {
         Square[][] secondBoard = boardTwo.getBoard();
         int boardLength = firstBoard.length;
         StringBuilder displayDoubleBoard = new StringBuilder();
-        displayDoubleBoard.append(drawColumnName(boardLength, 5));
+        displayDoubleBoard.append(drawColumnName(boardLength, 4));
         displayDoubleBoard.append(whiteSpaceBetweenBoards);
-        displayDoubleBoard.append(drawColumnName(boardLength, 1));
+        displayDoubleBoard.append(drawColumnName(boardLength, 0));
         displayDoubleBoard.append("\n");
         displayDoubleBoard.append(drawTwoBoardRows(firstBoard, secondBoard));
         System.out.println(displayDoubleBoard);
@@ -55,7 +56,7 @@ public class Display {
         for (int i = 1; i <= boardLength; i++) {
             column.append(ColorTerminal.ANSI_YELLOW + i + ColorTerminal.ANSI_RESET);
             if (i < 9) {
-                column.append(whiteSpaceBetweenObjects);
+                column.append(whiteSpaceBetweenColumnNames);
             } else {
                 column.append(" ");
             }
