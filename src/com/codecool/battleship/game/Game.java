@@ -33,7 +33,6 @@ public class Game {
     }
 
     private Player createPlayer(){
-
         return new Player(input.getPlayerName(Display.AskPlayerName));
     }
 
