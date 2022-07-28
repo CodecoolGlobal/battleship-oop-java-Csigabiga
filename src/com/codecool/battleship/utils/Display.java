@@ -110,11 +110,12 @@ public class Display {
                 3. Exit Game""");
     }
 
-    public void printSubMenu() {
+    public int printSubMenu() {
         System.out.println("""
                 1. Single Player
                 2. Multiplayer""");
-        input.validateInput(2, 1);
+        int result = input.validateInput(2, 1);
+        return result;
     }
 
     public void printHighScore() {
