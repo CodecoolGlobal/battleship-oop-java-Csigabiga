@@ -105,8 +105,6 @@ public class Display {
 
     public void printMenu() {
         System.out.println("""
-                Welcome to the Battleship game!
-                
                 1. Start Game
                 2. High Score
                 3. Exit Game""");
