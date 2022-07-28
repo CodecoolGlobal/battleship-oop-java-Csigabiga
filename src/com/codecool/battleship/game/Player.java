@@ -23,11 +23,9 @@ public class Player {
     }
 
     public boolean isAlive() {
-        for (int i = 0; i < ships.size(); i++) {
-            Ship ship = ships.get(i);
+        for (Ship ship : ships) {
             List<Square> squares = ship.getShipCoordinates();
-            for (int j = 0; j < squares.size(); j++) {
-                Square square = squares.get(j);
+            for (Square square : squares) {
                 if (square.getSquareStatus() != SquareStatus.HIT) {
                     return true;
                 }
@@ -35,6 +33,19 @@ public class Player {
         }
         return false;
     }
+
+//            for (int i = 0; i < ships.size(); i++) {
+//        Ship ship = ships.get(i);
+//        List<Square> squares = ship.getShipCoordinates();
+//        for (int j = 0; j < squares.size(); j++) {
+//            Square square = squares.get(j);
+//            if (square.getSquareStatus() != SquareStatus.HIT) {
+//                return true;
+//            }
+//        }
+//    }
+//        return false;
+//}
 
     public void addShipToList(Ship ship) {
         ships.add(ship);
