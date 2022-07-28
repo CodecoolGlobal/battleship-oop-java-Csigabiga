@@ -2,6 +2,7 @@ package com.codecool.battleship.board;
 
 import com.codecool.battleship.ship.ShipType;
 import com.codecool.battleship.utils.Decoder;
+import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
 
 import java.util.ArrayList;
@@ -54,11 +55,9 @@ public class BoardFactory {
 
 
     private boolean manualPlacement(ShipType ship) {
-        //ArrayList<Integer> coordinates = Decoder.decoder(Input.coordinates());
-        //int x = coordinates.get(0);
-        //int y = coordinates.get(1);
-        int x = 1;
-        int y = 1;
+        ArrayList<Integer> coordinates = Decoder.decoder(Input.coordinates());
+        int x = coordinates.get(0);
+        int y = coordinates.get(1);
         boolean empty = board.isPlacementOk(x, y);
         if (!empty) {
             return false;

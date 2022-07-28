@@ -1,5 +1,8 @@
 package  com.codecool.battleship;
 
+import com.codecool.battleship.board.Board;
+import com.codecool.battleship.board.BoardFactory;
+import com.codecool.battleship.utils.Decoder;
 import com.codecool.battleship.game.Game;
 import com.codecool.battleship.ship.ShipType;
 import com.codecool.battleship.utils.Display;
@@ -11,6 +14,7 @@ public class Battleship {
     public static void main(String[] args) {
         Input input = new Input();
         Display display = new Display(input);
+        Decoder decoder = new Decoder(input);
         MenuSelector menu = new MenuSelector();
         Game game = new Game(input, display);
 
@@ -31,6 +35,7 @@ public class Battleship {
                     break;
             }
 
+            isRunning = false;
         }
     }
 }
