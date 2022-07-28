@@ -42,8 +42,8 @@ public class BoardFactory {
                             switch (direction) {
                                 case "left" -> board.changeStatus(x - modifier, y, SquareStatus.SHIP);
                                 case "right" -> board.changeStatus(x + modifier, y, SquareStatus.SHIP);
-                                case "up" -> board.changeStatus(x, y + modifier, SquareStatus.SHIP);
-                                case "down" -> board.changeStatus(x, y - modifier, SquareStatus.SHIP);
+                                case "down" -> board.changeStatus(x, y + modifier, SquareStatus.SHIP);
+                                case "up" -> board.changeStatus(x, y - modifier, SquareStatus.SHIP);
                             }
                             modifier++;
                         }
@@ -105,24 +105,28 @@ public class BoardFactory {
         switch (direction) {
             case "left":
                 for (int i = 0; i < ship.getShipLength(); i++) {
+                    if (x - i < 0) {return false;}
                     boolean empty = board.isPlacementOk(x - i, y);
                     if (!empty) {return false;}
                 }
                 break;
             case "right":
                 for (int i = 0; i < ship.getShipLength(); i++) {
+                    if (x + i > board.getBoardSize()) {return false;}
                     boolean empty = board.isPlacementOk(x + i, y);
                     if (!empty) {return false;}
                 }
                 break;
             case "down":
                 for (int i = 0; i < ship.getShipLength(); i++) {
+                    if (y + i > board.getBoardSize()) {return false;}
                     boolean empty = board.isPlacementOk(x, y + i);
                     if (!empty) {return false;}
                 }
                 break;
             case "up":
                 for (int i = 0; i < ship.getShipLength(); i++) {
+                    if (y - i < 0) {return false;}
                     boolean empty = board.isPlacementOk(x, y - i);
                     if (!empty) {return false;}
                 }
