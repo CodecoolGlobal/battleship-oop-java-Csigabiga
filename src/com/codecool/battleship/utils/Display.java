@@ -117,11 +117,6 @@ public class Display {
                 1. Single Player
                 2. Multiplayer""");
         input.validateInput(2, 1);
-        System.out.println(SpecifyBoardSizeMsg);
-        int boardSize = input.validateInput(10, 5);
-        Board board = new Board(boardSize);
-        board.fillBoardWithSquares();
-        System.out.println(Arrays.toString(board.getBoard()));
     }
 
     public void printHighScore() {
