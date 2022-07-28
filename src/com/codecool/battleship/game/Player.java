@@ -3,13 +3,12 @@ import com.codecool.battleship.ship.Ship;
 import java.util.List;
 
 public class Player {
-    int playerNumber;
     String playerName;
     private List<Ship> ships;
 
-    public Player(int playerNumber) {
+    public Player(String playerName) {
 
-        this.playerNumber = playerNumber;
+        this.playerName = playerName;
     }
 
     public boolean isAlive() {
