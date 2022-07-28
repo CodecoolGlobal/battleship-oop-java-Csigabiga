@@ -13,8 +13,6 @@ public class Input {
     public static String direction() {return "up";}
 
 
-    public static ArrayList<Integer> decoder(String coords) {return null;}
-
     public int getUserInput(String msg) {
         try {
             System.out.println(msg);
