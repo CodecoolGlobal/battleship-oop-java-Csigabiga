@@ -59,27 +59,27 @@ public class BoardFactory {
         boolean empty = board.isPlacementOk(x, y);
         if (!empty) {
             return false;
-        } else {
-            if (ship == ShipType.Destroyer) {
-                board.changeStatus(x, y, SquareStatus.SHIP);
-            } else {
-                String direction = Input.direction();
-                if (!validatePlacement(direction, ship, x, y)) {
-                    return false;
-                }
-                for (int i = 0; i < ship.getShipLength() + 1; i++) {
-                    int modifier = 0;
-                    switch (direction) {
-                        case "left" -> board.changeStatus(x - modifier, y, SquareStatus.SHIP);
-                        case "right" -> board.changeStatus(x + modifier, y, SquareStatus.SHIP);
-                        case "up" -> board.changeStatus(x, y + modifier, SquareStatus.SHIP);
-                        case "down" -> board.changeStatus(x, y - modifier, SquareStatus.SHIP);
-                    }
-                    modifier++;
-                }
-            }
-            return true;
         }
+        if (ship == ShipType.Destroyer) {
+            board.changeStatus(x, y, SquareStatus.SHIP);
+        } else {
+            String direction = Input.direction();
+            if (!validatePlacement(direction, ship, x, y)) {
+                return false;
+            }
+            for (int i = 0; i < ship.getShipLength() + 1; i++) {
+                int modifier = 0;
+                switch (direction) {
+                    case "left" -> board.changeStatus(x - modifier, y, SquareStatus.SHIP);
+                    case "right" -> board.changeStatus(x + modifier, y, SquareStatus.SHIP);
+                    case "up" -> board.changeStatus(x, y + modifier, SquareStatus.SHIP);
+                    case "down" -> board.changeStatus(x, y - modifier, SquareStatus.SHIP);
+                }
+                modifier++;
+            }
+        }
+        return true;
+
     }
 
 
