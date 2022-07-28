@@ -99,15 +99,19 @@ public class BoardFactory {
                             case "up":
                                 board.changeStatus(x - modifier, y, SquareStatus.SHIP);
                                 squareList.add(board.getBoard()[x-modifier][y]);
+                                break;
                             case "down":
                                 board.changeStatus(x + modifier, y, SquareStatus.SHIP);
                                 squareList.add(board.getBoard()[x+modifier][y]);
+                                break;
                             case "right":
                                 board.changeStatus(x, y + modifier, SquareStatus.SHIP);
                                 squareList.add(board.getBoard()[x][y+modifier]);
+                                break;
                             case "left":
                                 board.changeStatus(x, y - modifier, SquareStatus.SHIP);
                                 squareList.add(board.getBoard()[x][y-modifier]);
+                                break;
                         }
                         modifier++;
                     }
