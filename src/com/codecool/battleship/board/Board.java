@@ -18,6 +18,9 @@ public class Board {
     }
 
 
+    public SquareStatus squareStatus(int x, int y) {return ocean[x][y].getSquareStatus();}
+
+
     public void changeStatus (int x, int y, SquareStatus status) {
         ocean[x][y].setSquareStatus(status);
     }

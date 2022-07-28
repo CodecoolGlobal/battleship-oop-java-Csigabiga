@@ -17,7 +17,7 @@ public class Battleship {
 
         boolean isRunning = true;
         while (isRunning) {
-            Decoder.decoder("B12", 10);
+            display.printDisplayField(Display.WelcomeMsg);
             display.printMenu();
             int validatedOption = input.validateInput(3, 1);
             new MenuSelector(validatedOption, display);

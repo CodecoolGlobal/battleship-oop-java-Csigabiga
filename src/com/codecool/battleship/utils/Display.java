@@ -122,4 +122,8 @@ public class Display {
         System.out.println("High Score");
         printMenu();
     }
+
+    public void printDisplayField(String message){
+        System.out.println(message);
+    }
 }

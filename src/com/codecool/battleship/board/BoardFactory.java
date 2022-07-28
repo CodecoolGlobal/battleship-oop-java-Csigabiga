@@ -91,13 +91,12 @@ public class BoardFactory {
     }
 
 
-    public Board placement(String type, ShipType ship) {
+    public void placement(String type, ShipType ship) {
         if (type.equals("manual")) {
             manualPlacement(ship);
         } else {
             randomPlacement(ship);
         }
-        return board;
     }
 
 
