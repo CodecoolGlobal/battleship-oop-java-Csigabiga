@@ -15,7 +15,7 @@ public class Display {
 
     public final static String SpecifyBoardSizeMsg = "Specify the board size (5-10)";
     public final static String WelcomeMsg = "Welcome to the Battleship game!";
-    public final static String AskForCoordinateMsg = "Define a coordinate like 'A1'";
+    public final static String AskForCoordinateMsg = "Define a coordinate e.g.:'A1'";
 
     public Display(Input input) {
         this.input = input;
