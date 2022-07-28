@@ -78,8 +78,8 @@ public class Game {
         Player currentPlayer = playerOne;
         Player enemyPlayer = playerTwo;
         while(!gameIsWon){
-            currentPlayer.manualShoot(enemyPlayer.getPlayerBoardFactory().getBoard());
             display.displayTwoBoard(currentPlayer.getPlayerBoardFactory().getBoard(), enemyPlayer.getPlayerBoardFactory().getBoard());
+            currentPlayer.manualShoot(enemyPlayer.getPlayerBoardFactory().getBoard());
             if(!enemyPlayer.isAlive()){
                 gameIsWon = true;
             }

@@ -14,7 +14,6 @@ public class Battleship {
     public static void main(String[] args) {
         Input input = new Input();
         Display display = new Display(input);
-        Decoder decoder = new Decoder(input);
         MenuSelector menu = new MenuSelector();
         Game game = new Game(input, display);
 
