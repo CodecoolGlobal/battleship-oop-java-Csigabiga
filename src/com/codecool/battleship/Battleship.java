@@ -12,13 +12,14 @@ public class Battleship {
     public static void main(String[] args) {
         Input input = new Input();
         Display display = new Display(input);
+        MenuSelector menu = new MenuSelector();
 
         boolean isRunning = true;
         while (isRunning) {
             display.printDisplayField(Display.WelcomeMsg);
             display.printMenu();
-            int validatedOption = input.validateInput(3, 1);
-            new MenuSelector(validatedOption, display);
+            int selectedMenuNumber = input.validateInput(3, 1);
+            int selectedSubMenuNumber = menu.chooseMenu(selectedMenuNumber, display);
 
             BoardFactory board = new BoardFactory(10);
             // TODO temp fix for running the Battleship.java
