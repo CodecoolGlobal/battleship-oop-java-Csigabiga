@@ -55,7 +55,8 @@ public class BoardFactory {
 
 
     private boolean manualPlacement(ShipType ship) {
-        ArrayList<Integer> coordinates = Decoder.decoder(Input.coordinates());
+        Display.shipTypeAnnouncer(ship);
+        ArrayList<Integer> coordinates = Decoder.decoder(Input.getCoordinate(Display.AskForCoordinateMsg), board.getBoardSize());
         int x = coordinates.get(0);
         int y = coordinates.get(1);
         boolean empty = board.isPlacementOk(x, y);
