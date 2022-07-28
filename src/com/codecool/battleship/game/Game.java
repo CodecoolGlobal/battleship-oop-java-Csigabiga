@@ -99,9 +99,12 @@ public class Game {
     }
 
     private Player createPlayer(int boardSize) {
+        Display.clearScreen();
         Player playerClass = new Player(input.getPlayerName(Display.AskPlayerName), boardSize);
+        Display.clearScreen();
         display.printBoardPlacementQuestion();
         int placementAnswer = input.validateInput(2, 1);
+        Display.clearScreen();
         for (int i = 0; i < ShipType.values().length;i++){
             display.displayOneBoard(playerClass.getPlayerBoardFactory().getBoard());
             playerClass.addShipToList(playerClass.getPlayerBoardFactory().placement(placementAnswer, ShipType.values()[i]));

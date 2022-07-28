@@ -5,7 +5,7 @@ public enum SquareStatus {
 
     EMPTY("\uD83C\uDF0A"),
     SHIP("\uD83D\uDC20"),
-    HIT("\uD83D\uDCA2"),
+    HIT("\uD83D\uDD25"),
     MISS("\uD83C\uDF08");
 
 
