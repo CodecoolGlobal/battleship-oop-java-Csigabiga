@@ -33,6 +33,7 @@ public class Game {
         display.printBoardPlacementQuestion();
         int placementAnswer = input.validateInput(2, 1);
         for (int i = 0; i < ShipType.values().length;i++){
+            display.displayOneBoard(playerClass.getPlayerBoardFactory().getBoard());
             playerClass.getPlayerBoardFactory().placement(placementAnswer, ShipType.values()[i]);
         }
 
