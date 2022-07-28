@@ -7,9 +7,7 @@ import com.codecool.battleship.utils.Input;
 public class Game {
 
 
-    private Player PlayerOne;
 
-    private Player PlayerTwo;
     private final Input input;
 
     private final Display display;
