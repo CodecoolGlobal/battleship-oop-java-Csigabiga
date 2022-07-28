@@ -29,6 +29,7 @@ public class Game {
         Player enemyPlayer = playerTwo;
         while(!gameIsWon){
             currentPlayer.shoot(enemyPlayer.getPlayerBoardFactory().getBoard());
+            display.displayTwoBoard(currentPlayer.getPlayerBoardFactory().getBoard(), enemyPlayer.getPlayerBoardFactory().getBoard());
             if(!enemyPlayer.isAlive()){
                 gameIsWon = true;
             }

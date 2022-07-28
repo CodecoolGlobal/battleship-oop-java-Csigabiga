@@ -25,6 +25,7 @@ public class BoardFactory {
         directions.add("right");
         directions.add("left");
         int index = ThreadLocalRandom.current().nextInt(0, directions.size());
+        List<Square> squareList = new ArrayList<>();
         boolean empty = false;
         while (!empty) {
             int x = ThreadLocalRandom.current().nextInt(0, this.board.getBoardSize());
@@ -33,6 +34,8 @@ public class BoardFactory {
             if (empty) {
                 if (ship == ShipType.Destroyer) {
                     board.changeStatus(x, y, SquareStatus.SHIP);
+                    squareList.add(board.getBoard()[x][y]);
+
                 } else {
                     String direction = directions.get(index);
                     if (!validatePlacement(direction, ship, x, y)) {
@@ -83,6 +86,7 @@ public class BoardFactory {
             }
             if (ship == ShipType.Destroyer) {
                 board.changeStatus(x, y, SquareStatus.SHIP);
+                squareList.add(board.getBoard()[x][y]);
                 succes = true;
             } else {
                 String direction = Input.getDirection(Display.AskForDirectionMsg);
