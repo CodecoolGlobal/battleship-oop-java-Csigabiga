@@ -33,6 +33,9 @@ public class Game {
         Player enemyPlayer = playerTwo;
         while(!gameIsWon){
             currentPlayer.shoot(enemyPlayer.getPlayerBoardFactory().getBoard());
+            if(!enemyPlayer.isAlive()){
+                gameIsWon = true;
+            }
 
 
             if(currentPlayer == playerOne){
@@ -44,6 +47,7 @@ public class Game {
                 enemyPlayer = playerTwo;
             }
         }
+        //TODO win message with current player
     }
 
     private Player createPlayer(int boardSize) {
