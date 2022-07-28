@@ -20,6 +20,8 @@ public class Player {
     public Player(String playerName, int boardSize) {
         this.board = new BoardFactory(boardSize);
         this.playerName = playerName;
+
+        this.ships = new ArrayList<>();
     }
 
     public boolean isAlive() {

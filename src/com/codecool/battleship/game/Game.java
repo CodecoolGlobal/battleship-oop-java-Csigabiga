@@ -1,12 +1,8 @@
 package com.codecool.battleship.game;
 
-import com.codecool.battleship.board.Board;
-import com.codecool.battleship.board.BoardFactory;
 import com.codecool.battleship.ship.ShipType;
 import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
-
-import javax.xml.stream.events.EndElement;
 
 public class Game {
 
@@ -56,7 +52,7 @@ public class Game {
         int placementAnswer = input.validateInput(2, 1);
         for (int i = 0; i < ShipType.values().length;i++){
             display.displayOneBoard(playerClass.getPlayerBoardFactory().getBoard());
-            playerClass.getPlayerBoardFactory().placement(placementAnswer, ShipType.values()[i]);
+            playerClass.addShipToList(playerClass.getPlayerBoardFactory().placement(placementAnswer, ShipType.values()[i]));
         }
         display.displayOneBoard(playerClass.getPlayerBoardFactory().getBoard());
 

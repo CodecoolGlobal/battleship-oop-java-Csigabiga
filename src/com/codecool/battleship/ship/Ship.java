@@ -5,16 +5,26 @@ import com.codecool.battleship.board.*;
 import java.util.List;
 
 public class Ship {
-    private String shipType;
+    private ShipType shipType;
     private List<Square> shipCoordinates;
 
+    public Ship(ShipType ship, List<Square> shipCoordinates) {
+        this.shipType = ship;
+        this.shipCoordinates = shipCoordinates;
+    }
 
-    public String getShipType() {
+
+    public void listAdder(Square square) {
+        shipCoordinates.add(square);
+    }
+
+
+    public ShipType getShipType() {
         return shipType;
     }
 
 
-    public void setShipType(String shipType) {
+    public void setShipType(ShipType shipType) {
         this.shipType = shipType;
     }
 

@@ -3,21 +3,21 @@ package com.codecool.battleship.board;
 public enum SquareStatus {
 
 
-    EMPTY('.'),
-    SHIP('S'),
-    HIT('H'),
-    MISS('M');
+    EMPTY("\uD83C\uDF0A"),
+    SHIP("\uD83D\uDC20"),
+    HIT("\uD83D\uDCA5"),
+    MISS("M");
 
 
-    private final char fieldName;
+    private final String fieldName;
 
 
-    SquareStatus(char symbol){
+    SquareStatus(String symbol){
         fieldName = symbol;
     }
 
 
-    public char getCharacter() {
+    public String getCharacter() {
         return fieldName;
     }
 }

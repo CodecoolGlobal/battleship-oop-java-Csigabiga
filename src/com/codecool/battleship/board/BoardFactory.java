@@ -1,15 +1,16 @@
 package com.codecool.battleship.board;
 
+import com.codecool.battleship.ship.Ship;
 import com.codecool.battleship.ship.ShipType;
 import com.codecool.battleship.utils.Decoder;
 import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class BoardFactory {
-
     private final Board board;
 
     public BoardFactory(int size) {
@@ -17,8 +18,8 @@ public class BoardFactory {
         board.fillBoardWithSquares();
     }
 
-    private void randomPlacement(ShipType ship) {
-        ArrayList<String> directions = new ArrayList<String>(4);
+    private Ship randomPlacement(ShipType ship) {
+        ArrayList<String> directions = new ArrayList<>(4);
         directions.add("up");
         directions.add("down");
         directions.add("right");
@@ -40,10 +41,23 @@ public class BoardFactory {
                         int modifier = 0;
                         for (int i = 0; i < ship.getShipLength(); i++) {
                             switch (direction) {
-                                case "up" -> board.changeStatus(x - modifier, y, SquareStatus.SHIP);
-                                case "down" -> board.changeStatus(x + modifier, y, SquareStatus.SHIP);
-                                case "right" -> board.changeStatus(x, y + modifier, SquareStatus.SHIP);
-                                case "left" -> board.changeStatus(x, y - modifier, SquareStatus.SHIP);
+                                case "up":
+                                    board.changeStatus(x - modifier, y, SquareStatus.SHIP);
+                                    squareList.add(board.getBoard()[x-modifier][y]);
+                                    break;
+                                case "down":
+                                    board.changeStatus(x + modifier, y, SquareStatus.SHIP);
+                                    squareList.add(board.getBoard()[x+modifier][y]);
+                                    break;
+                                case "right":
+                                    board.changeStatus(x, y + modifier, SquareStatus.SHIP);
+                                    squareList.add(board.getBoard()[x][y+modifier]);
+                                    break;
+                                case "left":
+                                    board.changeStatus(x, y - modifier, SquareStatus.SHIP);
+                                    squareList.add(board.getBoard()[x][y-modifier]);
+                                    break;
+
                             }
                             modifier++;
                         }
@@ -51,11 +65,13 @@ public class BoardFactory {
                 }
             }
         }
+        return new Ship(ship, squareList);
     }
 
 
-    private void manualPlacement(ShipType ship) {
+    private Ship manualPlacement(ShipType ship) {
         boolean succes = false;
+        List<Square> squareList = new ArrayList<>();
         while (!succes) {
             Display.shipTypeAnnouncer(ship);
             ArrayList<Integer> coordinates = Decoder.decoder(Input.getCoordinate(Display.AskForCoordinateMsg), board.getBoardSize());
@@ -76,18 +92,26 @@ public class BoardFactory {
                     int modifier = 0;
                     for (int i = 0; i < ship.getShipLength(); i++) {
                         switch (direction) {
-                            case "up" -> board.changeStatus(x - modifier, y, SquareStatus.SHIP);
-                            case "down" -> board.changeStatus(x + modifier, y, SquareStatus.SHIP);
-                            case "right" -> board.changeStatus(x, y + modifier, SquareStatus.SHIP);
-                            case "left" -> board.changeStatus(x, y - modifier, SquareStatus.SHIP);
+                            case "up":
+                                board.changeStatus(x - modifier, y, SquareStatus.SHIP);
+                                squareList.add(board.getBoard()[x-modifier][y]);
+                            case "down":
+                                board.changeStatus(x + modifier, y, SquareStatus.SHIP);
+                                squareList.add(board.getBoard()[x+modifier][y]);
+                            case "right":
+                                board.changeStatus(x, y + modifier, SquareStatus.SHIP);
+                                squareList.add(board.getBoard()[x][y+modifier]);
+                            case "left":
+                                board.changeStatus(x, y - modifier, SquareStatus.SHIP);
+                                squareList.add(board.getBoard()[x][y-modifier]);
                         }
                         modifier++;
                     }
-                    succes = true;
                 }
                 Display.wrongCoordinate();
             }
         }
+        return new Ship(ship, squareList);
     }
 
     public Board getBoard() {
@@ -95,11 +119,11 @@ public class BoardFactory {
     }
 
 
-    public void placement(int placementType, ShipType ship) {
+    public Ship placement(int placementType, ShipType ship) {
         if (placementType == 1) {
-            manualPlacement(ship);
+            return manualPlacement(ship);
         } else {
-            randomPlacement(ship);
+            return randomPlacement(ship);
         }
     }
 
