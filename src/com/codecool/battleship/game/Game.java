@@ -6,6 +6,8 @@ import com.codecool.battleship.ship.ShipType;
 import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
 
+import javax.xml.stream.events.EndElement;
+
 public class Game {
 
 
@@ -26,6 +28,22 @@ public class Game {
     public void gameLoop(int boardSize){
         Player playerOne = createPlayer(boardSize);
         Player playerTwo = createPlayer(boardSize);
+        boolean gameIsWon = false;
+        Player currentPlayer = playerOne;
+        Player enemyPlayer = playerTwo;
+        while(!gameIsWon){
+            currentPlayer.shoot(enemyPlayer.getPlayerBoardFactory().getBoard());
+
+
+            if(currentPlayer == playerOne){
+                currentPlayer = playerTwo;
+                enemyPlayer = playerOne;
+            }
+            else{
+                currentPlayer = playerOne;
+                enemyPlayer = playerTwo;
+            }
+        }
     }
 
     private Player createPlayer(int boardSize) {

@@ -18,8 +18,9 @@ public class Display {
     public final static String WelcomeMsg = "Welcome to the Battleship game!";
     public final static String AskForCoordinateMsg = "Define a coordinate e.g.:'A1'";
     public final static String AskForDirectionMsg = "Please type the direction to place your ship. (up, left, down, right)";
-
     public final static String AskPlayerName = "Please enter your name: ";
+
+    public final static String InvalidPlacement = ColorTerminal.ANSI_RED + "Invalid placement coordination!" + ColorTerminal.ANSI_RESET;
 
     public Display(Input input) {
         this.input = input;
@@ -128,7 +129,7 @@ public class Display {
         printMenu();
     }
 
-    public void printDisplayField(String message){
+    public static void printDisplayField(String message){
         System.out.println(message);
     }
 
