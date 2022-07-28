@@ -35,8 +35,8 @@ public class BoardFactory {
                     if (!validatePlacement(direction, ship, x, y)) {
                         empty = false;
                     } else {
+                        int modifier = 0;
                         for (int i = 0; i < ship.getShipLength() + 1; i++) {
-                            int modifier = 0;
                             switch (direction) {
                                 case "left" -> board.changeStatus(x - modifier, y, SquareStatus.SHIP);
                                 case "right" -> board.changeStatus(x + modifier, y, SquareStatus.SHIP);
@@ -67,8 +67,8 @@ public class BoardFactory {
             if (!validatePlacement(direction, ship, x, y)) {
                 return false;
             }
+            int modifier = 0;
             for (int i = 0; i < ship.getShipLength() + 1; i++) {
-                int modifier = 0;
                 switch (direction) {
                     case "left" -> board.changeStatus(x - modifier, y, SquareStatus.SHIP);
                     case "right" -> board.changeStatus(x + modifier, y, SquareStatus.SHIP);
