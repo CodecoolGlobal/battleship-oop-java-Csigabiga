@@ -1,5 +1,6 @@
 package com.codecool.battleship.game;
 import com.codecool.battleship.board.Board;
+import com.codecool.battleship.board.BoardFactory;
 import com.codecool.battleship.board.Square;
 import com.codecool.battleship.board.SquareStatus;
 import com.codecool.battleship.ship.Ship;
@@ -11,10 +12,12 @@ import java.util.List;
 
 public class Player {
     String playerName;
+
+    private BoardFactory board;
     private List<Ship> ships;
 
-    public Player(String playerName) {
-
+    public Player(String playerName, int boardSize) {
+        this.board = new BoardFactory(boardSize);
         this.playerName = playerName;
     }
 
@@ -35,8 +38,11 @@ public class Player {
     public void addShipToList(Ship ship) {
         ships.add(ship);
     }
-    public List<Ship> getPlayerShipList(){
+    public List<Ship> getPlayerShipList() {
         return this.ships;
+    }
+    public BoardFactory getPlayerBoardFactory() {
+        return this.board;
     }
 
 

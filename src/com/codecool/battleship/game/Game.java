@@ -23,17 +23,13 @@ public class Game {
     }
 
     public void gameLoop(int boardSize){
-        Board playerOneBoard = new BoardFactory(boardSize).getBoard();
-        Board playerTwoBoard = new BoardFactory(boardSize).getBoard();
-        Player playerOne = createPlayer();
-        Player playerTwo = createPlayer();
-
-
+        Player playerOne = createPlayer(boardSize);
+        Player playerTwo = createPlayer(boardSize);
 
     }
 
-    private Player createPlayer(){
-        return new Player(input.getPlayerName(Display.AskPlayerName));
+    private Player createPlayer(int boardSize){
+        return new Player(input.getPlayerName(Display.AskPlayerName), boardSize);
     }
 
 }
