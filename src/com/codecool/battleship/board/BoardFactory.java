@@ -85,8 +85,7 @@ public class BoardFactory {
                     }
                     succes = true;
                 }
-//                Display.printDisplayField(Display.Invalid);
-                //todo make invalid placement phase
+                Display.wrongCoordinate();
             }
         }
     }

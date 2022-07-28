@@ -4,7 +4,6 @@ import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.Square;
 import com.codecool.battleship.ship.ShipType;
 
-import java.util.Arrays;
 
 public class Display {
     final int ASCII = 96;
@@ -141,5 +140,9 @@ public class Display {
 
     public static void shipTypeAnnouncer(ShipType ship){
         System.out.println(String.format("You are placing a %1$s %2$s %3$s which is %4$s%5$s%6$s long.", ColorTerminal.ANSI_YELLOW , ship, ColorTerminal.ANSI_RESET, ColorTerminal.ANSI_YELLOW, ship.getShipLength(), ColorTerminal.ANSI_RESET));
+    }
+
+    public static void wrongCoordinate(){
+        System.out.println(InvalidPlacement);
     }
 }
