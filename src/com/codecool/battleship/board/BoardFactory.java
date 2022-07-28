@@ -26,8 +26,8 @@ public class BoardFactory {
         int index = ThreadLocalRandom.current().nextInt(0, directions.size());
         boolean empty = false;
         while (!empty) {
-            int x = ThreadLocalRandom.current().nextInt(0, this.board.getBoardSize() + 1);
-            int y = ThreadLocalRandom.current().nextInt(0, this.board.getBoardSize() + 1);
+            int x = ThreadLocalRandom.current().nextInt(0, this.board.getBoardSize());
+            int y = ThreadLocalRandom.current().nextInt(0, this.board.getBoardSize());
             empty = board.isPlacementOk(x, y);
             if (empty) {
                 if (ship == ShipType.Destroyer) {
