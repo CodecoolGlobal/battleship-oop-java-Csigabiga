@@ -7,9 +7,7 @@ import com.codecool.battleship.utils.Input;
 public class Game {
 
 
-    private Player PlayerOne;
 
-    private Player PlayerTwo;
     private final Input input;
 
     private final Display display;
@@ -45,7 +43,7 @@ public class Game {
                 enemyPlayer = playerTwo;
             }
         }
-        display.winMessage(currentPlayer.getPlayerName());
+        display.winMessage(enemyPlayer.getPlayerName());
     }
 
 
@@ -59,12 +57,12 @@ public class Game {
             display.displayTwoBoard(playerOne.getPlayerBoardFactory().getBoard(), playerTwo.getPlayerBoardFactory().getBoard());
             if(!playerTwo.isAlive()){
                 gameIsWon = true;
-                display.winMessage(playerOne.getPlayerName());
+                display.winMessage(playerTwo.getPlayerName());
             }
             playerTwo.randomShoot(playerOne.getPlayerBoardFactory().getBoard());
             if(!playerOne.isAlive()){
                 gameIsWon = true;
-                display.winMessage(playerTwo.getPlayerName());
+                display.winMessage(playerOne.getPlayerName());
             }
 
         }
@@ -95,7 +93,7 @@ public class Game {
                 enemyPlayer = playerTwo;
             }
         }
-        display.winMessage(currentPlayer.getPlayerName());
+        display.winMessage(enemyPlayer.getPlayerName());
     }
 
     private Player createPlayer(int boardSize) {
