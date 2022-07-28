@@ -28,10 +28,12 @@ public class Battleship {
                 case 1:
                     display.printDisplayField(Display.SpecifyBoardSizeMsg);
                     int boardSize = input.validateInput(10, 5);
-                    game.gameLoop(boardSize);
-
+                    game.gameLoopAi(boardSize);
+                    break;
                 case 2:
-                    //TODO implement high score
+                    display.printDisplayField(Display.SpecifyBoardSizeMsg);
+                    boardSize = input.validateInput(10, 5);
+                    game.gameLoop(boardSize);
                     break;
             }
 
