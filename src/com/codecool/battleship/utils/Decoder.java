@@ -1,5 +1,9 @@
 package com.codecool.battleship.utils;
 
+import java.util.ArrayList;
+
 public class Decoder {
-    // to convert String to coordinates
+
+    public static ArrayList<Integer> decoder(String coords) {return null;}
+
 }
