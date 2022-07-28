@@ -22,6 +22,34 @@ public class Game {
     }
 
 
+    public void gameLoopDemo(int boardSize) {
+        Player playerOne = createDemoPlayer(boardSize);
+        Player playerTwo = createDemoPlayer(boardSize);
+        boolean gameIsWon = false;
+        Player currentPlayer = playerOne;
+        Player enemyPlayer = playerTwo;
+        while(!gameIsWon){
+            display.displayTwoBoard(currentPlayer.getPlayerBoardFactory().getBoard(), enemyPlayer.getPlayerBoardFactory().getBoard());
+            currentPlayer.manualShoot(enemyPlayer.getPlayerBoardFactory().getBoard());
+            if(!enemyPlayer.isAlive()){
+                gameIsWon = true;
+            }
+
+
+            if(currentPlayer == playerOne){
+                currentPlayer = playerTwo;
+                enemyPlayer = playerOne;
+            }
+            else{
+                currentPlayer = playerOne;
+                enemyPlayer = playerTwo;
+            }
+        }
+        display.winMessage(currentPlayer.getPlayerName());
+    }
+
+
+
     public void gameLoopAi(int boardSize) {
         Player playerOne = createPlayer(boardSize);
         Player playerTwo = createAi(boardSize);
@@ -89,6 +117,20 @@ public class Game {
             display.displayOneBoard(playerClass.getPlayerBoardFactory().getBoard());
             playerClass.addShipToList(playerClass.getPlayerBoardFactory().placement(2, ShipType.values()[i]));
         }
+
+        return playerClass;
+    }
+
+
+    private Player createDemoPlayer(int boardSize) {
+        Player playerClass = new Player(input.getPlayerName(Display.AskPlayerName), boardSize);
+        display.printBoardPlacementQuestion();
+        int placementAnswer = input.validateInput(2, 1);
+        for (int i = 4; i < ShipType.values().length;i++){
+            display.displayOneBoard(playerClass.getPlayerBoardFactory().getBoard());
+            playerClass.addShipToList(playerClass.getPlayerBoardFactory().placement(placementAnswer, ShipType.values()[i]));
+        }
+        display.displayOneBoard(playerClass.getPlayerBoardFactory().getBoard());
 
         return playerClass;
     }

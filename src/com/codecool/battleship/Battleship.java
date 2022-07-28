@@ -35,6 +35,8 @@ public class Battleship {
                     boardSize = input.validateInput(10, 5);
                     game.gameLoop(boardSize);
                     break;
+                case 3:
+                    game.gameLoopDemo(5);
             }
 
             isRunning = false;

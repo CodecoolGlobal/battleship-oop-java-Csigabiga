@@ -118,8 +118,9 @@ public class Display {
     public int printSubMenu() {
         System.out.println("""
                 1. Single Player
-                2. Multiplayer""");
-        int result = input.validateInput(2, 1);
+                2. Multiplayer
+                3. DEMO‼️‼""");
+        int result = input.validateInput(3, 1);
         return result;
     }
 
