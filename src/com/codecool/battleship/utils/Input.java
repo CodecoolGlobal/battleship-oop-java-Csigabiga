@@ -13,6 +13,7 @@ public class Input {
     public static String direction() {return "up";}
 
 
+    // TODO make better method name
     public int getUserInput(String msg) {
         try {
             System.out.println(msg);
@@ -29,5 +30,11 @@ public class Input {
             option = getUserInput(Display.InvalidOptionMsg);
         }
         return option;
+    }
+    public String getPlayerName(String msg){
+        System.out.println(msg);
+        Scanner playerName = new Scanner(System.in);
+        return playerName.nextLine();
+
     }
 }
