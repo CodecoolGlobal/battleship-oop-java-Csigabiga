@@ -65,7 +65,7 @@ public class BoardFactory {
         if (ship == ShipType.Destroyer) {
             board.changeStatus(x, y, SquareStatus.SHIP);
         } else {
-            String direction = Input.getDirection();
+            String direction = Input.getDirection(Display.AskForDirectionMsg);
             if (!validatePlacement(direction, ship, x, y)) {
                 return false;
             }

@@ -4,6 +4,7 @@ import com.codecool.battleship.board.Square;
 import com.codecool.battleship.board.SquareStatus;
 import com.codecool.battleship.ship.Ship;
 import com.codecool.battleship.utils.Decoder;
+import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class Player {
 
 
     public boolean shoot(Board board) {
-        ArrayList<Integer> coordinates = Decoder.decoder(Input.coordinates());
+        ArrayList<Integer> coordinates = Decoder.decoder(Input.getCoordinate(Display.AskForCoordinateMsg), board.getBoardSize());
         int x = coordinates.get(0);
         int y = coordinates.get(1);
         SquareStatus state = board.squareStatus(x, y);
