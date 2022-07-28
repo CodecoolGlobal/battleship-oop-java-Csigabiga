@@ -13,7 +13,7 @@ public class Input {
         }
     }
 
-    public int validateInput(int max, int min) {
+    public static int validateInput(int max, int min) {
         int option = getUserInput(Display.ChooseOptionMsg);
         while (option > max || option < min) {
             option = getUserInput(Display.InvalidOptionMsg);
