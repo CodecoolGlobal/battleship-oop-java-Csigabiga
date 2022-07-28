@@ -49,7 +49,7 @@ public class Display {
         String whiteSpaces = " ".repeat(whiteSpaceBeforeNumbers);
         column.append(whiteSpaces);
         for (int i = 1; i <= boardLength; i++) {
-            column.append(i);
+            column.append(ColorTerminal.ANSI_YELLOW + i + ColorTerminal.ANSI_RESET);
             if (i < 9) {
                 column.append(whiteSpaceBetweenObjects);
             } else {
@@ -66,7 +66,7 @@ public class Display {
         for (Square[] row : currentBoard){
             char ch = (char)  (rowCount + ASCII);
             rows.append(whiteSpaceBetweenObjects);
-            rows.append(Character.toUpperCase(ch));
+            rows.append(ColorTerminal.ANSI_YELLOW + Character.toUpperCase(ch) + ColorTerminal.ANSI_RESET);
             rows.append(whiteSpaceBetweenObjects);
             for(Square square : row){
                 rows.append(square.getSquareStatus().getCharacter());
@@ -84,14 +84,14 @@ public class Display {
         for (int i = 0; i < boardOne.length; i++) {
             char ch = (char) (i + 1 + ASCII);
             twoBoards.append(whiteSpaceBetweenObjects);
-            twoBoards.append(Character.toUpperCase(ch));
+            twoBoards.append(ColorTerminal.ANSI_YELLOW + Character.toUpperCase(ch) + ColorTerminal.ANSI_RESET);
             twoBoards.append(whiteSpaceBetweenObjects);
             for (Square square : boardOne[i]) {
                 twoBoards.append(square.getSquareStatus().getCharacter());
                 twoBoards.append(whiteSpaceBetweenObjects);
             }
             twoBoards.append(" ".repeat(27));
-            twoBoards.append(Character.toUpperCase(ch));
+            twoBoards.append(ColorTerminal.ANSI_YELLOW + Character.toUpperCase(ch) + ColorTerminal.ANSI_RESET);
             twoBoards.append(whiteSpaceBetweenObjects);
             for (Square square : boardTwo[i]) {
                 twoBoards.append(square.getSquareStatus().getCharacter());
