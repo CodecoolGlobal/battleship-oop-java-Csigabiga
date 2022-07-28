@@ -91,8 +91,6 @@ public class BoardFactory {
         }
     }
 
-
-
     public Board getBoard() {
         return board;
     }

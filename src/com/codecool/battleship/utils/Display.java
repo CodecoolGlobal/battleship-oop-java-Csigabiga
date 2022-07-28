@@ -13,7 +13,6 @@ public class Display {
     private final Input input;
     public final static String ChooseOptionMsg = "Choose an option";
     public final static String InvalidOptionMsg = "Invalid input, try again!";
-
     public final static String SpecifyBoardSizeMsg = "Specify the board size (5-10)";
     public final static String WelcomeMsg = "Welcome to the Battleship game!";
     public final static String AskForCoordinateMsg = "Define a coordinate e.g.:'A1'";
