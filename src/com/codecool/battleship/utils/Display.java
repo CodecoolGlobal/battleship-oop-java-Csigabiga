@@ -12,14 +12,14 @@ public class Display {
     String whiteSpaceBetweenBoards = " ".repeat(30);
     private final Input input;
     public final static String ChooseOptionMsg = "Choose an option";
-    public final static String InvalidOptionMsg = "Invalid input, try again!";
+    public final static String InvalidOptionMsg = ColorTerminal.ANSI_RED + "Invalid input, try again!" + ColorTerminal.ANSI_RESET;
     public final static String SpecifyBoardSizeMsg = "Specify the board size (5-10)";
+    public final static String SpecifyCoordinateMsg = ColorTerminal.ANSI_RED + "You have given a wrong second coordinate. Give me a new number!"+ ColorTerminal.ANSI_RESET;
     public final static String WelcomeMsg = "Welcome to the Battleship game!";
     public final static String AskForCoordinateMsg = "Choose a coordinate e.g.:'A1'";
     public final static String AskForDirectionMsg = "Please type the direction to place your ship. (up, left, down, right)";
     public final static String AskPlayerName = "Please enter your name: ";
-
-    public final static String InvalidPlacement = ColorTerminal.ANSI_RED + "Invalid placement coordination!" + ColorTerminal.ANSI_RESET;
+    public final static String InvalidPlacement = ColorTerminal.ANSI_RED + "Invalid placement coordinate!" + ColorTerminal.ANSI_RESET;
 
     public Display(Input input) {
         this.input = input;
@@ -150,5 +150,10 @@ public class Display {
 
     public void winMessage(String playerName){
         System.out.println(String.format("%1$s YOU HAVE SUCCESSFULLY SET ALL OF THE ENEMY FISH SHIP ON FIRE. GG", playerName));
+    }
+
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }

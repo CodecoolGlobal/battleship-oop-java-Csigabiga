@@ -1,10 +1,6 @@
 package  com.codecool.battleship;
 
-import com.codecool.battleship.board.Board;
-import com.codecool.battleship.board.BoardFactory;
-import com.codecool.battleship.utils.Decoder;
 import com.codecool.battleship.game.Game;
-import com.codecool.battleship.ship.ShipType;
 import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
 import com.codecool.battleship.utils.MenuSelector;
@@ -22,7 +18,9 @@ public class Battleship {
             display.printDisplayField(Display.WelcomeMsg);
             display.printMenu();
             int selectedMenuNumber = input.validateInput(3, 1);
+            Display.clearScreen();
             int selectedSubMenuNumber = menu.chooseMenu(selectedMenuNumber, display);
+            Display.clearScreen();
             switch (selectedSubMenuNumber){
                 case 1:
                     display.printDisplayField(Display.SpecifyBoardSizeMsg);

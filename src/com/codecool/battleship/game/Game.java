@@ -78,6 +78,7 @@ public class Game {
         Player currentPlayer = playerOne;
         Player enemyPlayer = playerTwo;
         while(!gameIsWon){
+            Display.clearScreen();
             display.displayTwoBoard(currentPlayer.getPlayerBoardFactory().getBoard(), enemyPlayer.getPlayerBoardFactory().getBoard());
             currentPlayer.manualShoot(enemyPlayer.getPlayerBoardFactory().getBoard());
             if(!enemyPlayer.isAlive()){
@@ -104,6 +105,7 @@ public class Game {
         for (int i = 0; i < ShipType.values().length;i++){
             display.displayOneBoard(playerClass.getPlayerBoardFactory().getBoard());
             playerClass.addShipToList(playerClass.getPlayerBoardFactory().placement(placementAnswer, ShipType.values()[i]));
+            Display.clearScreen();
         }
         display.displayOneBoard(playerClass.getPlayerBoardFactory().getBoard());
 

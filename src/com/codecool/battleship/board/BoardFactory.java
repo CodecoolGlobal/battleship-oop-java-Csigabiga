@@ -73,25 +73,26 @@ public class BoardFactory {
 
 
     private Ship manualPlacement(ShipType ship) {
-        boolean succes = false;
+        boolean success = false;
         List<Square> squareList = new ArrayList<>();
-        while (!succes) {
+        while (!success) {
             Display.shipTypeAnnouncer(ship);
             ArrayList<Integer> coordinates = Decoder.decoder(Input.getCoordinate(Display.AskForCoordinateMsg), board.getBoardSize());
             int x = coordinates.get(0);
             int y = coordinates.get(1);
             boolean empty = board.isPlacementOk(x, y);
             if (!empty) {
-                succes = false;
+                success = false;
             }
             if (ship == ShipType.Destroyer) {
                 board.changeStatus(x, y, SquareStatus.SHIP);
                 squareList.add(board.getBoard()[x][y]);
-                succes = true;
+                success = true;
             } else {
                 String direction = Input.getDirection(Display.AskForDirectionMsg);
                 if (!validatePlacement(direction, ship, x, y)) {
-                    succes = false;
+                    success = false;
+                    Display.wrongCoordinate();
                 } else {
                     int modifier = 0;
                     for (int i = 0; i < ship.getShipLength(); i++) {
@@ -116,8 +117,8 @@ public class BoardFactory {
                         modifier++;
                     }
                 }
-                Display.wrongCoordinate();
             }
+            success = true;
         }
         return new Ship(ship, squareList);
     }
