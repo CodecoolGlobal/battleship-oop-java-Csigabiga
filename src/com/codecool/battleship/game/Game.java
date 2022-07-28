@@ -36,6 +36,7 @@ public class Game {
             display.displayOneBoard(playerClass.getPlayerBoardFactory().getBoard());
             playerClass.getPlayerBoardFactory().placement(placementAnswer, ShipType.values()[i]);
         }
+        display.displayOneBoard(playerClass.getPlayerBoardFactory().getBoard());
 
         return playerClass;
     }

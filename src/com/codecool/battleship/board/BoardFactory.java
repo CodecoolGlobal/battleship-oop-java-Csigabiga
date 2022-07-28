@@ -112,7 +112,7 @@ public class BoardFactory {
                 break;
             case "down":
                 for (int i = 0; i < ship.getShipLength(); i++) {
-                    if (x + i > board.getBoardSize()) {return false;}
+                    if (x + i > board.getBoardSize()-1) {return false;}
                     boolean empty = board.isPlacementOk(x + i, y);
                     if (!empty) {return false;}
                 }
