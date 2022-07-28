@@ -10,6 +10,7 @@ import com.codecool.battleship.utils.Input;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Player {
     String playerName;
@@ -36,18 +37,6 @@ public class Player {
         return false;
     }
 
-//            for (int i = 0; i < ships.size(); i++) {
-//        Ship ship = ships.get(i);
-//        List<Square> squares = ship.getShipCoordinates();
-//        for (int j = 0; j < squares.size(); j++) {
-//            Square square = squares.get(j);
-//            if (square.getSquareStatus() != SquareStatus.HIT) {
-//                return true;
-//            }
-//        }
-//    }
-//        return false;
-//}
 
     public void addShipToList(Ship ship) {
         ships.add(ship);
@@ -60,10 +49,29 @@ public class Player {
     }
 
 
-    public boolean shoot(Board board) {
+    public boolean manualShoot(Board board) {
         ArrayList<Integer> coordinates = Decoder.decoder(Input.getCoordinate(Display.AskForCoordinateMsg), board.getBoardSize());
         int x = coordinates.get(0);
         int y = coordinates.get(1);
+        SquareStatus state = board.squareStatus(x, y);
+        switch (state) {
+            case EMPTY:
+                board.changeStatus(x, y, SquareStatus.MISS);
+                return true;
+            case SHIP:
+                board.changeStatus(x, y, SquareStatus.HIT);
+                return true;
+            case HIT:
+            case MISS:
+                return false;
+        }
+        return false;
+    }
+
+
+    public boolean randomShoot(Board board) {
+        int x = ThreadLocalRandom.current().nextInt(0, board.getBoardSize());
+        int y = ThreadLocalRandom.current().nextInt(0, board.getBoardSize());
         SquareStatus state = board.squareStatus(x, y);
         switch (state) {
             case EMPTY:
