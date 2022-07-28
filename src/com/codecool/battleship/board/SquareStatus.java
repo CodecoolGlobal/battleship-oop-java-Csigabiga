@@ -5,8 +5,8 @@ public enum SquareStatus {
 
     EMPTY("\uD83C\uDF0A"),
     SHIP("\uD83D\uDC20"),
-    HIT("\uD83D\uDCA5"),
-    MISS("M");
+    HIT("\uD83D\uDCA2"),
+    MISS("\uD83C\uDF08");
 
 
     private final String fieldName;
