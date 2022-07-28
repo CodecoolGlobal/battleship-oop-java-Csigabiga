@@ -4,9 +4,11 @@ import java.util.List;
 
 public class Player {
     int playerNumber;
+    String playerName;
     private List<Ship> ships;
 
     public Player(int playerNumber) {
+
         this.playerNumber = playerNumber;
     }
 
