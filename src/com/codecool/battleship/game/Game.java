@@ -26,7 +26,6 @@ public class Game {
     public void gameLoop(int boardSize){
         Player playerOne = createPlayer(boardSize);
         Player playerTwo = createPlayer(boardSize);
-
     }
 
     private Player createPlayer(int boardSize) {

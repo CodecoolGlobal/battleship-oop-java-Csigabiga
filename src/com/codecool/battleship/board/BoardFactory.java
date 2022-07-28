@@ -54,9 +54,11 @@ public class BoardFactory {
 
 
     private boolean manualPlacement(ShipType ship) {
-        ArrayList<Integer> coordinates = Decoder.decoder(Input.coordinates());
-        int x = coordinates.get(0);
-        int y = coordinates.get(1);
+        //ArrayList<Integer> coordinates = Decoder.decoder(Input.coordinates());
+        //int x = coordinates.get(0);
+        //int y = coordinates.get(1);
+        int x = 1;
+        int y = 1;
         boolean empty = board.isPlacementOk(x, y);
         if (!empty) {
             return false;
@@ -64,7 +66,7 @@ public class BoardFactory {
         if (ship == ShipType.Destroyer) {
             board.changeStatus(x, y, SquareStatus.SHIP);
         } else {
-            String direction = Input.direction();
+            String direction = "down"; //Input.direction();
             if (!validatePlacement(direction, ship, x, y)) {
                 return false;
             }
