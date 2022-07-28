@@ -2,6 +2,7 @@ package com.codecool.battleship.game;
 
 import com.codecool.battleship.board.Board;
 import com.codecool.battleship.board.BoardFactory;
+import com.codecool.battleship.ship.ShipType;
 import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
 
@@ -28,8 +29,14 @@ public class Game {
 
     }
 
-    private Player createPlayer(int boardSize){
-        return new Player(input.getPlayerName(Display.AskPlayerName), boardSize);
-    }
+    private Player createPlayer(int boardSize) {
+        Player playerClass = new Player(input.getPlayerName(Display.AskPlayerName), boardSize);
+        display.printBoardPlacementQuestion();
+        int placementAnswer = input.validateInput(2, 1);
+        for (int i = 0; i < ShipType.values().length;i++){
+            playerClass.getPlayerBoardFactory().placement(placementAnswer, ShipType.values()[i]);
+        }
 
+        return playerClass;
+    }
 }

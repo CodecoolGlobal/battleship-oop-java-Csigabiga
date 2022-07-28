@@ -1,6 +1,7 @@
 package  com.codecool.battleship;
 
 import com.codecool.battleship.game.Game;
+import com.codecool.battleship.ship.ShipType;
 import com.codecool.battleship.utils.Display;
 import com.codecool.battleship.utils.Input;
 import com.codecool.battleship.utils.MenuSelector;

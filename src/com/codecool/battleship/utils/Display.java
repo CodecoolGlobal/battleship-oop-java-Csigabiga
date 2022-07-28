@@ -128,4 +128,11 @@ public class Display {
     public void printDisplayField(String message){
         System.out.println(message);
     }
+
+    public void printBoardPlacementQuestion(){
+        System.out.println("""
+                Would you like to place the ships:
+                1. Manually
+                2. Automatic random placement""");
+    }
 }

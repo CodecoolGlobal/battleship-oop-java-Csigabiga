@@ -90,8 +90,8 @@ public class BoardFactory {
     }
 
 
-    public void placement(String type, ShipType ship) {
-        if (type.equals("manual")) {
+    public void placement(int placementType, ShipType ship) {
+        if (placementType == 1) {
             manualPlacement(ship);
         } else {
             randomPlacement(ship);
