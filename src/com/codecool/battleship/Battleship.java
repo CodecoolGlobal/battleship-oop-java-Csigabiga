@@ -15,6 +15,7 @@ public class Battleship {
 
         boolean isRunning = true;
         while (isRunning) {
+            display.printDisplayField(Display.WelcomeMsg);
             display.printMenu();
             int validatedOption = input.validateInput(3, 1);
             new MenuSelector(validatedOption, display);
