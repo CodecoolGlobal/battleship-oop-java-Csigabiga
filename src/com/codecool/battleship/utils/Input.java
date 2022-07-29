@@ -31,15 +31,14 @@ public class Input {
         System.out.println(Display.AskForCoordinateMsg);
         Scanner sc = new Scanner(System.in);
         String coordinates = sc.nextLine();
-        if (validateCoordinate(coordinates)) return coordinates;
-        else return "";
+        return (validateCoordinate(coordinates));
     }
 
-    public static boolean validateCoordinate(String coordinate) {
+    public static String validateCoordinate(String coordinate) {
         while (coordinate.length() > 3 || coordinate.length() < 2) {
             coordinate = getCoordinate(Display.InvalidOptionMsg);
         }
-        return true;
+        return coordinate;
     }
 
     public static String getDirection(String msg) {

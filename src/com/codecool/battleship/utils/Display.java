@@ -119,7 +119,7 @@ public class Display {
         System.out.println("""
                 1. Single Player
                 2. Multiplayer
-                3. DEMO‼️‼""");
+                3. DEMO‼️""");
         int result = input.validateInput(3, 1);
         return result;
     }
